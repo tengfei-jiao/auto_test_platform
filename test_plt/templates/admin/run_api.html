@@ -1,0 +1,20 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<h2>被执行的接口定义是：</h2>
+<div>
+    名称：{{ api.name }}  ( {{ api.to_url }} )
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <h2>接口所需的参数：</h2>
+    <table>
+        <tbody>
+        {{ form }}
+        </tbody>
+    </table>>
+    <input type="hidden" name="action" value="run_api">
+    <input type="submit" name="run" value="运行">
+</form>
+{% endblock %}

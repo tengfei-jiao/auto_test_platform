@@ -1,0 +1,31 @@
+{# 继承了site-packages下的django/contrib/admin/templates/admin/change_form.html文件中的base_site.html, #}
+{# base_site.html又继承了base.html #}
+{% extends "admin/base_site.html" %}
+
+{% block extrahead %}
+<style>/*
+    .inline-group .tabular td.original p {
+    position: absolute;
+    left: 0;
+    height: 1.7em;
+    padding: 2px 9px;
+    overflow: hidden;
+    font-size: 9px;
+    font-weight: bold;
+    color: var(--body-quiet-color);
+    _width: 700px;
+}*/
+    {# 隐藏了td.original #}
+    td.original p{
+        visibility: hidden;
+    }
+    .inline-group .tabular tr.has_original td{
+        padding-top: 5px;
+    }
+    {# 对用例执行履历中的几个长度太长了的字段进行限制，使值为单个单词，不截断 #}
+    .field-final_url, .field-query_params, .field-req_headers, .field-req_body, .field-res_headers, .field-res_body {
+        word-break: break-all;
+        max-width: 250px;
+    }
+</style>
+{% endblock %}
